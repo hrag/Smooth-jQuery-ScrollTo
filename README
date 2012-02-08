@@ -5,6 +5,8 @@ http://trabbu.com/code/scroller
 
 This is version 0.1.
 
+Compatible with jQuery 1.3.0+
+
 Enjoy this simple but pretty neat smooth page scroller. I built this
 after doing a search for one only to come up with some complicated
 solutions. This one is short and sweet and super easy to modify.
