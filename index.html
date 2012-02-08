@@ -1,0 +1,164 @@
+<html>
+<head>
+
+<title>Smooth, simple jQuery scrollTo</title>
+
+
+<!-- 
+
+Developed by Hrag Chanchanian for Trabbu.com in 2012.
+@hrag on the Twitters
+
+This be version 0.1.
+
+Enjoy this simple but pretty neat smooth page scroller. I built this
+after doing a search for one only to come up with some complicated
+solutions. This one is short and sweet and super easy to modify.
+
+**REQUIRES JQUERY**
+
+Cheers!
+
+
+LICENSE
+
+Copyright (C) 2012 Hrag Chanchanian
+
+The JavaScript code in this page is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+-->
+
+
+<!-- jQuery. This is non-optional. Tested on 1.7.0, but should work on 1.5+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+
+
+<!-- The meat. Here is the goto() function, where the magic happens. -->
+<script type="text/javascript">
+function goto(element, finetune, duration) {
+	$(function() {
+		if (duration == null) {
+			duration = 1000;
+		}
+		if (finetune == null) {
+			finetune = 0;
+		}
+		if (element == null) {
+			var ypos = 0;
+			var exacttop = (ypos + finetune);
+			$('html, body').animate({scrollTop: (exacttop)}, duration, 'swing');
+		} else {
+			var ypos = $('#'+element).position();
+			var exacttop = (ypos.top + finetune);
+			$('html, body').animate({scrollTop: (exacttop)}, duration, 'swing');
+		}
+	});
+}
+
+</script>
+
+<style type="text/css">
+	p, h1, ul {width: 600px; margin: 20px auto;}
+	span {color: #3b7c25; font-weight: bold;}
+</style>
+
+
+</head>
+<body>
+
+<p>
+	<h1>Smooth, simple jQuery scrollTo</h1>
+</p>
+<p>
+	Developed by Hrag Chanchanian for <a href="http://trabbu.com">Trabbu.com</a> | 	<a href="http://twitter.com/hrag">@hrag</a><br /><br />
+	Everything can be found in the source.
+</p>
+<p>
+	<ul>
+		<li><a href="javascript:goto('section1')">Section 1</a> :: no arguments passed, just the element name</li>
+		<li><a href="javascript:goto('section2', -72)" >Section 2</a> :: -72 set as the finetune argument</li>
+		<li><a href="javascript:goto('section3', null, 3000)">Section 3</a> :: 3000 set as the duration argument</li>
+		<li><a href="javascript:goto('section4', null, null)">Section 4</a> :: just the element, and the rest null</li>
+		<li>To return to the top, just use goto(). Just like that, with no arguments</li>
+	</ul>
+</p>
+
+
+<!-- Empty Space -->
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+<!-- SECTION 1 -->
+
+<p id="section1">
+<strong>Section 1</strong> [<a href="javascript:goto()">top</a>]<br /><br />
+<span>This is what you get with only the element argument passed to the goto() function</span><br /><br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dui elit, malesuada et aliquet ac, euismod et erat. Cras vel arcu ac erat egestas blandit a accumsan ligula. Nullam molestie auctor magna, quis dapibus elit volutpat id. Sed ornare erat dui. Nulla tincidunt rutrum est, quis fringilla nisi tempor quis. Duis quis risus nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis rutrum posuere mauris id posuere. Morbi at molestie mauris. Etiam mollis lacinia nisi vel interdum. Aliquam porttitor, lorem et luctus iaculis, sapien nibh volutpat ipsum, ac consequat nisi risus quis eros.
+</p>
+<p>
+Sed ac leo nulla, eget aliquet sem. Duis ultricies mauris ac neque luctus euismod. Ut magna purus, interdum vitae rhoncus eget, rhoncus eget nisl. Sed vitae justo lectus. In dapibus tempus libero, id tincidunt enim ultricies congue. Fusce ut turpis augue, id egestas est. Phasellus turpis sapien, hendrerit eu adipiscing non, tempor sit amet magna. Suspendisse vel sapien sit amet lacus pharetra pretium. Donec feugiat ipsum eget mi tempor vel mattis nunc luctus.
+</p>
+<p>
+Vivamus nec lectus nisi. Suspendisse sollicitudin sem eu lacus aliquam accumsan. Fusce molestie, dui vitae viverra congue, metus ante posuere nisi, vel feugiat leo ligula quis leo. Ut blandit eros vel ligula placerat imperdiet. Vestibulum dictum felis laoreet libero laoreet pulvinar sit amet in erat. Donec metus velit, varius at egestas non, mollis quis turpis. Nullam tempor lectus eu orci condimentum id fringilla metus cursus. Curabitur orci urna, hendrerit vitae eleifend ut, egestas at nulla. Etiam accumsan suscipit tincidunt. Praesent lacinia sagittis sem accumsan blandit.
+</p>
+
+
+<!-- SECTION 2 -->
+
+<p id="section2">
+<strong>Section 2</strong> [<a href="javascript:goto()">top</a>]<br /><br />
+<span>This is what you get with -72 set as the finetune (2nd) argument. Notice how it didn't scroll right to "Section 2" but a bit above? 72px to be exact</span><br /><br />
+Nam arcu libero, aliquam vitae malesuada quis, consequat et mi. Suspendisse tortor dolor, sagittis nec interdum vel, faucibus ut eros. Sed eget quam ut lacus consectetur euismod vitae vitae tellus. Pellentesque eget egestas odio. Nullam felis sapien, lobortis at posuere sed, convallis quis nunc. Suspendisse potenti. Fusce vulputate, dui quis sollicitudin suscipit, diam lacus porttitor ante, et fringilla libero augue vitae mauris. In quis arcu ante, sit amet eleifend dolor. Etiam et enim vitae lacus fringilla dignissim vitae egestas ipsum. Duis lorem neque, egestas non pharetra vel, convallis ac arcu. Maecenas at justo eget nibh laoreet sodales. In enim felis, vulputate id adipiscing quis, dignissim eu velit. Mauris quis tincidunt odio. Phasellus imperdiet augue vel sem volutpat tristique.
+</p>
+<p>
+Aliquam erat volutpat. Fusce a odio augue. Proin suscipit sodales nisl, in elementum ligula volutpat at. Sed luctus venenatis scelerisque. Mauris accumsan massa vitae erat vehicula dictum. Nam porttitor aliquet dolor, ac blandit justo scelerisque vel. Suspendisse quis diam tellus, ut lacinia velit. Mauris vel turpis in ligula ornare elementum. Integer vestibulum, elit at mollis gravida, lectus augue viverra dolor, vel imperdiet odio elit quis neque. Morbi fermentum lectus in justo vehicula ullamcorper ullamcorper eget sapien. Ut id pharetra sem. Aenean auctor ultrices interdum. Mauris hendrerit nibh sit amet erat ullamcorper id elementum velit aliquam. Sed lobortis ligula in sapien blandit porta.
+</p>
+<p>
+Vivamus quis magna velit, ac dignissim sem. Proin auctor metus nec neque condimentum quis tincidunt massa bibendum. Praesent sit amet consectetur purus. Vivamus nec turpis enim, ornare tincidunt augue. Nulla hendrerit, purus in dapibus dictum, nulla nisi ultricies erat, nec luctus nibh augue quis justo. Etiam malesuada dolor tortor. Cras ac velit erat. Etiam mattis facilisis ornare.
+</p>
+
+
+<!-- SECTION 3 -->
+
+<p id="section3">
+<strong>Section 3</strong> [<a href="javascript:goto()">top</a>]<br /><br />
+<span>This is what you get with 3000 set as the duration (3rd) argument. This value is in milliseconds (ms) and determines the duration of the scroll</span><br /><br />
+Sed convallis accumsan mi ut dignissim. Donec metus ante, pellentesque a hendrerit sed, rhoncus ac diam. Sed vulputate hendrerit quam ac dapibus. Nullam a lorem sed eros sagittis bibendum vel id erat. Duis sed urna vel dui pharetra porta porttitor vulputate arcu. Etiam non sollicitudin mi. Nam pellentesque dapibus erat.
+</p>
+<p>
+Pellentesque malesuada, leo quis vehicula aliquet, eros mauris porttitor lorem, sit amet consequat augue eros a lorem. Mauris sed elit ut diam iaculis rutrum. Integer ac lectus a arcu venenatis rhoncus non sed eros. Integer eget mi vel ipsum pellentesque fermentum. Etiam id tellus nisl. Sed vel velit id mi sollicitudin egestas. Quisque magna orci, lobortis a tristique non, laoreet nec velit. Nunc auctor mollis sem, non lobortis quam dignissim vel. Morbi posuere, sem at consequat convallis, felis odio viverra libero, vitae ultricies turpis sapien in felis. Aenean tristique tempus est quis euismod. Vestibulum sed enim odio. Donec augue nisi, consequat ut eleifend quis, semper sed nulla. Nunc fermentum auctor magna, vitae venenatis diam dictum at. Vestibulum cursus ornare velit, quis malesuada eros imperdiet non. Morbi facilisis, enim in posuere placerat, tellus turpis viverra nibh, nec placerat eros mi in mauris. Integer suscipit gravida mi, et vestibulum dui dictum et.
+</p>
+<p>
+Vivamus eget ante magna. Integer eleifend ligula in mi aliquet mattis. Sed sollicitudin faucibus luctus. Donec accumsan justo et nunc fermentum at iaculis libero ultrices. Aliquam in nibh ut turpis condimentum feugiat. Curabitur ipsum justo, dictum pharetra tempus a, ornare nec sem. Vestibulum in lectus sit amet mauris semper placerat. Curabitur lobortis metus quis erat eleifend posuere. Sed vitae enim sem, et tempus diam. Pellentesque egestas posuere sapien, in feugiat dolor volutpat quis. Sed et magna elit. Mauris ultricies vulputate eleifend. Nunc rhoncus volutpat neque id faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis volutpat magna in arcu interdum non aliquet enim lobortis.
+</p>
+<p>
+Morbi ultricies dui sit amet dolor volutpat tempus congue eu ipsum. Praesent vitae ante odio, in laoreet turpis. In at dolor et massa fermentum lobortis. Etiam commodo feugiat fringilla. Nunc porta fermentum molestie. Maecenas mollis commodo interdum. Nunc cursus malesuada augue, sit amet tincidunt turpis mattis quis. Phasellus eros neque, venenatis ac laoreet a, condimentum nec risus. Pellentesque cursus velit in nulla interdum eget pharetra augue pulvinar. Proin placerat, nulla ut iaculis hendrerit, arcu tellus accumsan nisi, sed pharetra lacus lectus nec ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque elementum elit a tortor vulputate vel lacinia metus placerat. Nam interdum, tortor ac fermentum semper, eros lacus accumsan arcu, at rhoncus tellus mauris congue lorem. Pellentesque ut urna eu neque bibendum scelerisque. Etiam tempor cursus iaculis.
+</p>
+
+
+
+<!-- SECTION 4 -->
+
+<p id="section4">
+<strong>Section 4</strong> [<a href="javascript:goto()">top</a>]<br /><br />
+<span>This is basically the same as the Section 1 example, but showing that you can populate arguments with null if you wanted to</span><br /><br />
+Nullam eu lacinia diam. Proin bibendum nibh sit amet tortor convallis bibendum. Sed ac odio elementum ligula hendrerit bibendum in sed urna. Nunc vitae velit nulla. Curabitur imperdiet ullamcorper libero vel venenatis. Cras condimentum, sem eu adipiscing tristique, odio libero ultrices sapien, vel tempus nibh elit sit amet nunc. Integer nisl ante, fringilla sed ullamcorper nec, molestie vel elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis sit amet ullamcorper diam.
+</p>
+<p>
+Nulla sit amet orci tellus, sed fringilla sem. Suspendisse potenti. Suspendisse ac orci augue, sed iaculis enim. Curabitur ac mi tempor eros luctus convallis. Mauris sem sem, vestibulum in varius quis, consequat vel urna. Pellentesque tincidunt, mi nec euismod pellentesque, orci lacus rutrum felis, vitae molestie leo augue at lacus. Vestibulum blandit blandit sodales. Aliquam erat volutpat. Etiam vitae orci dolor. Nam pellentesque hendrerit velit in sollicitudin. Maecenas volutpat ligula at justo sagittis at tincidunt quam auctor. Nunc consequat faucibus aliquam.
+</p>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
